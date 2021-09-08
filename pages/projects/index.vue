@@ -13,7 +13,7 @@
         :key="`project-${key}`">
 
         <nuxt-link
-          :to="`projects/${p.slug}`"
+          :to="p.slug"
           class="block hover:bg-gray-50">
           <div class="flex items-center px-4 py-4 sm:px-6">
             <div class="min-w-0 flex-1 flex items-center">
@@ -22,10 +22,9 @@
                   <div class="flex">
                     <p class="text-sm font-medium text-blue-600 truncate mr-3">{{ p.title }}</p>
                     <Pill>
-                      {{ p.category }}
+                      {{ p.Status }}
                     </Pill>
                   </div>
-
                   <p class="mt-2 flex items-center text-sm text-gray-500">
                     {{ p.description }}
                   </p>
