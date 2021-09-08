@@ -1,0 +1,37 @@
+{
+  "name": "proceswandeling",
+  "version": "1.0.0",
+  "description": "Accessibility Issues Sharing Platform",
+  "author": "Maarten Lauwaert",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@braid/vue-formulate": "^2.5.2",
+    "@nuxt/content": "^1.14.0",
+    "cross-env": "^5.2.0",
+    "google-spreadsheet": "^3.1.15",
+    "nuxt": "^2.0.0",
+    "vue-youtube-embed": "^2.2.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "autoprefixer": "^8.6.4",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-vue": "^4.0.0",
+    "netlify-lambda": "^1.6.3",
+    "nodemon": "^1.11.0",
+    "postcss": "^8.2.8",
+    "prettier": "1.14.3"
+  }
+}
