@@ -1,16 +1,31 @@
 <template>
   <div>
-    <button
-      v-if="activeList == 0"
-      class="px-4 py-5 sm:px-6 text-sm underline"
-      @click="switchList(1)">Sorteer op Topic</button>
-    <button
-      v-if="activeList == 1"
-      class="px-4 py-5 sm:px-6 text-sm underline"
-      @click="switchList(0)">Sorteer op Status</button>
+    <ul class="my-5 list-disc">
+      <li class="px-4 sm:px-6 bold ">
+        Sorteer op
+      </li>
+      <li class="px-4 sm:px-6 text-sm">
+        <button
+          :class="{ 'text-blue-400': orderBy == 1 }"
+          class="underline text-left"
+          @click="setActiveOrderBy(1)">Topic</button>
+      </li>
+      <li class="px-4 sm:px-6 text-sm">
+        <button
+          :class="{ 'text-blue-400': orderBy == 0 }"
+          class="underline text-left"
+          @click="setActiveOrderBy(0)">Status</button>
+      </li>
+      <li class="px-4 sm:px-6 text-sm">
+        <button
+          :class="{ 'text-blue-400': orderBy == 2 }"
+          class="underline text-left"
+          @click="setActiveOrderBy(2)">Verantwoordelijke</button>
+      </li>
+    </ul>
     <ul class="bg-blue-400">
       <li
-        v-for="(t, key) in list"
+        v-for="(t, key) in orderedList"
         :key="`topic-${key}`"
       >
         <div class="px-4 py-5 sm:px-6 sticky top-0 bg-blue-400">
@@ -37,34 +52,21 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  data: function() {
-    return {
-      activeList: 0
-    }
-  },
   computed: {
+    orderBy() {
+      return this.$store.state.activeOrderByOption
+    },
     ...mapGetters({
-      Topics: 'ObservationsPerTopic',
-      Status: 'ObservationsPerStatus'
-    }),
-    list() {
-      if (this.activeList == 0) {
-        return this.Status
-      } else {
-        return this.Topics
-      }
-    }
-  },
-  mounted() {
-    this.list = this.Topics
+      orderedList: 'ObservationsOrderedBy'
+    })
   },
   methods: {
-    switchList(list) {
-      this.activeList = list
-    }
+    ...mapActions({
+      setActiveOrderBy: 'setActiveOrderBy'
+    })
   }
 }
 </script>

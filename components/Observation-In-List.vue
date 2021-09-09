@@ -50,9 +50,7 @@ export default {
     },
     card() {
       if (this.id === -1) return
-      console.log('the id', this.id)
       const card = this.$store.state.Observaties[this.id - 1]
-
       let status = 'Niet bepaald'
       if (typeof card.Status != 'undefined') {
         if (card.Status !== '') {

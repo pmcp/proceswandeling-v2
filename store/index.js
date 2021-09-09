@@ -5,7 +5,9 @@ export const state = () => ({
   Observaties: null,
   status: 0,
   activeObservationId: null,
-  spreadSheetId: null
+  spreadSheetId: null,
+  orderByOptions: ['Topic naam', 'Status', 'Verantwoordelijke'],
+  activeOrderByOption: 0
 })
 
 export const mutations = {
@@ -20,6 +22,9 @@ export const mutations = {
   },
   setSpreadSheetId(state, val) {
     state.spreadSheetId = val
+  },
+  setActiveOrderBy(state, val) {
+    state.activeOrderByOption = val
   }
 }
 
@@ -55,6 +60,10 @@ export const actions = {
   setActiveObservation({ commit }, id) {
     console.log('here', id)
     commit('setActiveObservation', id)
+  },
+
+  setActiveOrderBy({ commit }, id) {
+    commit('setActiveOrderBy', id)
   },
 
   async sendFormData({ state, dispatch, commit }, { data, observation }) {
@@ -111,49 +120,23 @@ export const actions = {
 }
 
 export const getters = {
-  ObservationsPerTopic: state => {
-    // TODO: Here, ore somewhere else, arrange cards in correct order
+  ObservationsOrderedBy: state => {
+    const orderBy = state.orderByOptions[state.activeOrderByOption]
     if (state.Observaties == undefined) return null
     if (state.Observaties == null) return null
-    const ObservationsPerTopic = state.Observaties.reduce(
-      (acc, observation) => {
-        if (observation['Moment Beschrijving'] == undefined) return acc
-        const topic = observation['Topic naam']
-        if (acc[topic]) {
-          acc[topic].cards = [...acc[topic].cards, observation.Id * 1]
-        } else {
-          acc[topic] = {
-            description: observation['Topic beschrijving'],
-            cards: [observation.Id * 1]
-          }
+    const ObservationsOrdered = state.Observaties.reduce((acc, observation) => {
+      let title = observation[orderBy]
+      if (!title) title = 'Niet bepaald'
+      if (acc[title]) {
+        acc[title].cards = [...acc[title].cards, observation.Id * 1]
+      } else {
+        acc[title] = {
+          cards: [observation.Id * 1]
         }
-        return acc
-      },
-      {}
-    )
-    return ObservationsPerTopic
-  },
-
-  ObservationsPerStatus: state => {
-    // TODO: Here, ore somewhere else, arrange cards in correct order
-    if (state.Observaties == undefined) return null
-    if (state.Observaties == null) return null
-    const ObservationsPerTopic = state.Observaties.reduce(
-      (acc, observation) => {
-        let status = observation['Status']
-        if (!observation['Status']) status = 'Niet bepaald'
-        if (acc[status]) {
-          acc[status].cards = [...acc[status].cards, observation.Id * 1]
-        } else {
-          acc[status] = {
-            cards: [observation.Id * 1]
-          }
-        }
-        return acc
-      },
-      {}
-    )
-    return ObservationsPerTopic
+      }
+      return acc
+    }, {})
+    return ObservationsOrdered
   },
 
   activeObservation: state => {
