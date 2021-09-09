@@ -1,8 +1,17 @@
 <template>
   <div
     class="relative h-screen flex overflow-hidden bg-white">
-    <Observations-List class="overflow-y-auto flex-0 "/>
-    <Observation class="overflow-y-auto flex-1 "/>
+    <Observations-List class="overflow-y-auto w-1/5"/>
+    <Observation
+      v-if="observation"
+      class="overflow-y-auto w-full m-5"
+    />
+    <div
+      v-else
+      class="w-full h-full flex justify-center items-center"
+    >
+      <span class="italic text-blue-500">Selecteer een observatie</span>
+    </div>
   </div>
 </template>
 <script>
@@ -19,6 +28,11 @@ export default {
 
     return {
       page
+    }
+  },
+  computed: {
+    observation() {
+      return this.$store.getters.activeObservation
     }
   },
   mounted() {

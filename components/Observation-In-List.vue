@@ -1,20 +1,20 @@
 <template>
   <div
     :class="{ 'bg-blue-100 hover:bg-blue-100': isActive }"
-    class="block hover:bg-blue-50"
+    class="block hover:bg-blue-50 bg-white cursor-pointer"
     @click="setActiveObservation(id)">
     <div class="flex items-center px-4 py-4 sm:px-6">
       <div class="min-w-0 flex-1 flex items-center">
-        <div class="min-w-0 flex-1  md:grid md:grid-cols-2 md:gap-4">
-          <div>
-            <div class="flex">
-              <p class="text-sm font-medium text-blue-600 truncate mr-3">{{ card.opmerking }}</p>
-              <Pill>
-                {{ card.status }}
-              </Pill>
-            </div>
+
+        <div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-blue-600 truncate pb-2">{{ card.opmerking }}</p>
+            <Pill>
+              {{ card.status }}
+            </Pill>
           </div>
         </div>
+
       </div>
       <div>
         <!-- Heroicon name: solid/chevron-right -->

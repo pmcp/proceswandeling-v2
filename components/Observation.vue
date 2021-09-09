@@ -1,6 +1,7 @@
 <template>
-  <div>
-    {{ observation }}
+  <div class="flex ">
+    <Card class="w-full"/>
+    <Action class="w-1/3 sticky top-5 mr-5"/>
   </div>
 </template>
 <script>

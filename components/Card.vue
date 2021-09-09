@@ -1,79 +1,7 @@
 <template>
   <div>
-    <div v-if="action">
+    <div>
       <div class="flex flex-col overflow-hidden container mx-auto">
-        <FormulateForm
-          v-model="actionForm"
-          @submit="handleForm">
-          <div
-            class="flex-1  p-6 flex flex-col justify-between rounded border-2 "
-            style="border-color:#009de0; background-color: #FAFDFF"
-          >
-            <div class="flex-1 flex flex-col justify-between font-light ">
-              <div class="flex-1">
-                <p class="text-xl">
-                  <span class="font-semibold">Observatie: </span>
-                  <span class="text-md py-2 italic">
-                    {{ action.observation.text }}
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div class="flex-1 pt-4 flex flex-col justify-between font-light">
-              <div class="flex-1">
-                <FormulateInput
-                  type="textarea"
-                  name="text"
-                >
-                  <template #label="{ id }">
-                    <div>
-                      <span class="font-semibold">Actie: </span>
-                    </div>
-                  </template>
-                </FormulateInput>
-              </div>
-            </div>
-            <div class="flex-1 pt-4 flex flex-col justify-between font-light">
-              <div class="flex-1">
-                <FormulateInput
-                  type="text"
-                  name="owner"
-                >
-                  <template #label="{ id }">
-                    <div>
-                      <span class="font-semibold">Toegewezen aan: </span>
-                    </div>
-                  </template>
-                </FormulateInput>
-              </div>
-            </div>
-            <div class="flex-1 pt-4 flex flex-col justify-between font-light">
-              <div class="flex-1">
-                <FormulateInput
-                  type="text"
-                  name="owner"
-                >
-                  <template #label="{ id }">
-                    <span class="font-semibold">Status: </span>
-                  </template>
-                </FormulateInput>
-              </div>
-            </div>
-            <FormulateInput
-              :disabled="status != 0"
-              :wrapper-class="['btn']"
-              type="submit"
-            >
-              <template>
-                <div>
-                  <span v-if="status === 0">Opslaan</span>
-                  <span v-else-if="status === 1">Even geduld...</span>
-                  <span v-else-if="status === 2">Verstuurd!</span>
-                </div>
-              </template>
-            </FormulateInput>
-          </div>
-        </FormulateForm>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <p class="text-xl text-gray-900">
             <span class="font-semibold">Context</span>
@@ -81,17 +9,14 @@
         </div>
 
         <div
-          v-if="videoReady"
           class="flex-shrink-0"
         >
           <youtube
-            :player-vars="{ start: action.session.videoStartTime }"
             :video-id="action.session.videoId"
+            :player-vars="{ start: action.session.videoStartTime }"
             class="embed-container"
-            @ready="ready"
           />
         </div>
-
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-xl text-gray-900">
@@ -117,7 +42,6 @@
                 class="relative pb-10"
               >
                 <template v-if="key == action.phase.order">
-                  <!-- FIXME: Is this DIV still needed? -->
                   <div
                     v-if="key != Object.keys(phases).length - 1"
                     class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full bg-gray-300"
@@ -146,15 +70,14 @@
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
                       <span
-                        class="text-xs font-semibold tracking-wide uppercase">
-                        {{ p.Naam }}
-                      </span>
+                        class="text-xs font-semibold tracking-wide uppercase"
+                      >{{ p.Naam }}</span>
                       <span class="text-sm text-gray-500">{{ p.Beschrijving }}</span>
                     </span>
                   </div>
                 </template>
                 <template v-else>
-                  <!-- FIXME: Is this DIV still needed? -->
+                  <!-- Complete Step -->
                   <div
                     v-if="key != Object.keys(phases).length - 1"
                     class="-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full bg-gray-300"
@@ -167,8 +90,7 @@
                   >
                     <span
                       class="h-9 flex items-center"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <span
                         class="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 rounded-full"
                         style="border-color: #009de0"
@@ -181,17 +103,24 @@
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
                       <span
-                        class="text-xs font-semibold tracking-wide uppercase">
-                        {{ p.Naam }}
-                      </span>
+                        class="text-xs font-semibold tracking-wide uppercase"
+                      >{{ p.Naam }}</span
+                      >
                       <span class="text-sm text-gray-500">{{ p.Beschrijving }}</span>
                     </span>
                   </a>
                 </template>
               </li>
             </ol>
+            <!--
+            <p class="text-xl text-gray-900">
+              <span class="font-semibold">Fase:</span> {{ action.phase.order }}.
+              {{ action.phase.name }}
+            </p>
+            <p class="text-md text-gray-500 py-2">{{ action.phase.descr }}</p> -->
           </div>
         </div>
+
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-xl text-gray-900">
@@ -200,6 +129,7 @@
             </p>
           </div>
         </div>
+
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-xl text-gray-900">
@@ -211,6 +141,7 @@
             </p>
           </div>
         </div>
+
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-xl text-gray-900">
@@ -221,170 +152,21 @@
         </div>
       </div>
     </div>
-    <div
-      v-else
-      class="py-32 flex justify-center items-center"
-    >
-      Selecteer een observatie
-    </div>
   </div>
 </template>
+
 <script>
-import { getIdFromURL, getTimeFromURL } from 'vue-youtube-embed'
-import { mapActions } from 'vuex'
-
 export default {
-  name: 'Card',
-  props: {
-    spreadSheetId: {
-      type: String,
-      default: function() {
-        return ''
-      }
-    },
-    activeCard: {
-      type: Object,
-      default: function() {
-        return {}
-      }
-    },
-    phases: {
-      type: Array,
-      default: function() {
-        return []
-      }
-    }
-  },
-  data: function() {
-    return {
-      action: null,
-      videoReady: false,
-      player: null,
-      actionForm: {}
-    }
-  },
   computed: {
+    action() {
+      return this.$store.getters.parsedObservation
+    },
     status() {
-      return this.$store.state.sheets.status
-    }
-  },
-  watch: {
-    activeCard: function(newVal) {
-      this.parseData(newVal)
-    }
-  },
-  methods: {
-    ...mapActions({
-      sendFormData: 'sheets/sendFormData'
-    }),
-    handleForm(data) {
-      this.sendFormData({
-        spreadSheetId: this.spreadSheetId,
-        actionData: data,
-        activeCard: this.activeCard
-      })
+      return this.$store.state.status
     },
-    ready(player) {
-      this.player = player
-      this.isLoaded = true
-    },
-    // generateReport() {
-    //   this.$refs.html2Pdf.generatePdf();
-    // },
-
-    parseData(entry) {
-      this.action = null
-      this.videoReady = false
-      // Using vue-youtube-embed to get id and time (https://github.com/kaorun343/vue-youtube-embed)
-
-      const videoId = getIdFromURL(entry['Moment Video'])
-      const videoStartTime = getTimeFromURL(entry['Moment Video'])
-      console.log(videoStartTime)
-      // console.log(entry);
-      const action = {
-        id: entry.Id,
-        report: {
-          text: entry['Moment Beschrijving']
-        },
-        phase: {
-          order: entry['Fase Nummer'],
-          name: entry['Fase Naam'],
-          descr: entry['Fase Beschrijving']
-        },
-        observation: {
-          text: entry['Opmerking'],
-          context: entry['Moment Id']
-        },
-        action: {
-          text: entry['Actie'],
-          context: entry['Moment Beschrijving']
-        },
-        persona: {
-          name: entry['Persona Naam'],
-          descr: entry['Persona Beschrijving']
-        },
-        session: {
-          videoId: videoId,
-          videoStartTime: videoStartTime,
-          date: entry['Sessie Datum']
-        },
-        user: {
-          name: entry['Gebruiker Naam'],
-          age: entry['Gebruiker Leeftijd']
-          // 'email': entry.gsx$.$t,
-        },
-        stakeholder: {
-          name: entry['Stakeholder Naam'],
-          email: entry['Stakeholder Email'],
-          division: entry['Stakeholder Afdeling']
-          // 'email': entry.gsx$.$t,
-        },
-        owner: {
-          name: entry['Verantwoordelijke'],
-          status: entry['Timing'],
-          timing: entry['Status']
-          // 'email': entry.gsx$.$t,
-        }
-      }
-
-      this.action = action
-      if (this.player)
-        this.player.target.seekTo(this.action.session.videoStartTime)
-
-      this.videoReady = true
-
-      //Set form
-      this.actionForm = {
-        text: this.action.action.text,
-        owner: this.action.owner.name,
-        status: this.action.owner.status
-      }
-      // this.actions.push(action);
-
-      // });
-      //
-      //         // Push entry into the list of quotes
-
-      // this.actions = val;
+    phases() {
+      return this.$store.state.Fases
     }
   }
 }
 </script>
-<style>
-.embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-}
-.embed-container iframe,
-.embed-container object,
-.embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-</style>

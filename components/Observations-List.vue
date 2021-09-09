@@ -1,15 +1,14 @@
 <template>
-  <ul class="">
+  <ul class="bg-blue-400">
     <li
       v-for="(t, key) in Topics"
       :key="`topic-${key}`"
-      class="mb-10"
     >
-      <div class="bg-white px-4 py-5 sm:px-6 sticky top-0">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
+      <div class="px-4 py-5 sm:px-6 sticky top-0 bg-blue-400">
+        <h3 class="text-lg text-white leading-6 font-medium ">
           {{ key }}
         </h3>
-        <p class="text-sm italic">
+        <p class="text-white text-sm italic">
           {{ t.description }}
         </p>
       </div>
