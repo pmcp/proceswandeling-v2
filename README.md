@@ -5,11 +5,12 @@
 ## TODO
 - Change colors tailwind
 - Add 'Timing' in action
-- fix youtube start time
-- Use own video player
-- More secure password flow
-- Add 404
-- Make sur page gets loaded on generate
-- Check Project for other TODO's
+- change icons homepage
 - Check if all tailwind classes are exported
+- fix youtube start time
+- Make sure page gets loaded on generate
+- Add 404
+- More secure password flow
+- Use own video player
+- Check Project for other TODO's
 

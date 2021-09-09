@@ -73,7 +73,7 @@
             </div>
             <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
               <nuxt-link
-                to="/method"
+                to="/methode"
                 class="text-base font-medium text-blue-700 hover:text-blue-600">Verdiep je in onze methodiek<span aria-hidden="true"> &rarr;</span></nuxt-link>
             </div>
           </div>
