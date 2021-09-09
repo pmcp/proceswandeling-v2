@@ -3,9 +3,9 @@
     v-model="actionForm"
     @submit="handleForm">
     <div
-      class="flex-1  p-6 flex flex-col justify-between rounded border-2 bg-blue-100"
+      class="flex-1  p-6 flex flex-col justify-between rounded-lg shadow bg-blue-100"
     >
-      <div class="flex-1 pt-4 flex flex-col justify-between font-light">
+      <div class="flex-1 flex flex-col justify-between font-light">
         <div class="flex-1">
           <FormulateInput
             type="textarea"
@@ -19,7 +19,7 @@
           </FormulateInput>
         </div>
       </div>
-      <div class="flex-1 pt-4 flex flex-col justify-between font-light">
+      <div class="flex-1 flex flex-col justify-between font-light">
         <div class="flex-1">
           <FormulateInput
             type="text"
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="flex-1 pt-4 flex flex-col justify-between font-light">
+      <div class="flex-1 flex flex-col justify-between font-light">
         <div class="flex-1">
           <FormulateInput
             type="text"

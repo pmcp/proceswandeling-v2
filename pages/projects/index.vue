@@ -1,9 +1,11 @@
 <template>
-  <section>
+  <section class="relative max-w-7xl mx-auto py-10 px-4 sm:py-10 sm:px-6 lg:px-8 mt-5 shadow rounded-xl">
+    <Navigation/>
     <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 ">
-      <h3 class="text-lg leading-6 font-medium text-gray-900 mb-5">
+      <h3 class="text-lg leading-6 font-medium text-gray-600 mb-5">
         Projecten
       </h3>
+      <p class="font-medium text-gray-600 text-sm">Phasellus ac rhoncus ex, quis bibendum ipsum. Nullam quis magna vitae diam scelerisque interdum. Praesent vehicula tristique hendrerit. Nunc efficitur tortor gravida turpis aliquam, id pulvinar ex faucibus. Duis nec lectus vel justo congue pharetra. Donec consectetur interdum mauris non interdum. Cras tristique purus a feugiat pellentesque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed et quam ut libero scelerisque vehicula. Nulla a massa malesuada, lobortis purus eget, vulputate ligula. </p>
     </div>
     <ul
       role="list"
@@ -13,7 +15,7 @@
         :key="`project-${key}`">
 
         <nuxt-link
-          :to="p.slug"
+          :to="`projects/${p.slug}`"
           class="block hover:bg-gray-50">
           <div class="flex items-center px-4 py-4 sm:px-6">
             <div class="min-w-0 flex-1 flex items-center">

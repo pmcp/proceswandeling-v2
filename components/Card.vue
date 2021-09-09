@@ -2,19 +2,15 @@
   <div>
     <div>
       <div class="flex flex-col overflow-hidden container mx-auto">
-        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-          <p class="text-xl text-gray-900">
-            <span class="font-semibold">Context</span>
-          </p>
-        </div>
+
 
         <div
-          class="flex-shrink-0"
+
         >
           <youtube
             :video-id="action.session.videoId"
             :player-vars="{ start: action.session.videoStartTime }"
-            class="embed-container"
+            class="embed-container m-5"
           />
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">

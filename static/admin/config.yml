@@ -44,18 +44,16 @@ collections:
               pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$', 'Must match "xx" or "xx-XX" syntax (ex. "en" or "sv-SE")'],
             }
           # - { label: Site Email, name: siteemail, widget: string, required: false }
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
+  - name: 'page'
+    label: 'Pages'
+    label_singular: 'Page'
+    folder: 'content/pages'
     create: true
     format: 'frontmatter'
-    slug: '{{fields.createdAt}}-{{slug}}'
-    # editor:
-    #   preview: true
+    slug: '{{slug}}'
     fields:
-      - { label: 'Created Date', name: 'createdAt', widget: 'datetime', date_format: "YYYY-MM-DD", time_format: false }
       - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Intro', name: 'intro', widget: 'string', required: true }
       - { label: 'Body', name: 'body', widget: 'markdown', required: false }
   - name: 'projects'
     label: 'Projects'

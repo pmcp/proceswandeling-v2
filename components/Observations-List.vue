@@ -1,41 +1,25 @@
 <template>
-  <div>
-    <ul class="my-5 list-disc">
-      <li class="px-4 sm:px-6 bold ">
-        Sorteer op
-      </li>
-      <li class="px-4 sm:px-6 text-sm">
-        <button
-          :class="{ 'text-blue-400': orderBy == 1 }"
-          class="underline text-left"
-          @click="setActiveOrderBy(1)">Topic</button>
-      </li>
-      <li class="px-4 sm:px-6 text-sm">
-        <button
-          :class="{ 'text-blue-400': orderBy == 0 }"
-          class="underline text-left"
-          @click="setActiveOrderBy(0)">Status</button>
-      </li>
-      <li class="px-4 sm:px-6 text-sm">
-        <button
-          :class="{ 'text-blue-400': orderBy == 2 }"
-          class="underline text-left"
-          @click="setActiveOrderBy(2)">Verantwoordelijke</button>
-      </li>
-      <li class="px-4 sm:px-6 text-sm">
-        <button
-          :class="{ 'text-blue-400': orderBy == 3 }"
-          class="underline text-left"
-          @click="setActiveOrderBy(3)">Fase</button>
-      </li>
-    </ul>
+  <div class="pb-20">
+    <div class="px-5 ">
+      <FormulateInput
+        :options="ObservationsListSortOptions"
+        type="select"
+        placeholder="Selecteer"
+        @input="setActiveOrderBy">
+        <template #label="{ id }">
+          <div class="pb-2">
+            <span class="font-semibold">Sorteer: </span>
+          </div>
+        </template>
+      </FormulateInput>
+    </div>
     <ul class="bg-blue-400">
       <li
         v-for="(t, key) in orderedList"
         :key="`topic-${key}`"
       >
-        <div class="px-4 py-5 sm:px-6 sticky top-0 bg-blue-400">
-          <h3 class="text-lg text-white leading-6 font-medium ">
+        <div class="px-4 py-2 sm:px-6 uppercase sticky top-0 bg-blue-400">
+          <h3 class="text-sm text-white leading-6 ">
             {{ key }}
           </h3>
           <p class="text-white text-sm italic">
@@ -64,6 +48,9 @@ export default {
   computed: {
     orderBy() {
       return this.$store.state.activeOrderByOption
+    },
+    ObservationsListSortOptions() {
+      return this.$store.getters.ObservationsListSortOptions
     },
     ...mapGetters({
       orderedList: 'ObservationsOrderedBy'

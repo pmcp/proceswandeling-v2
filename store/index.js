@@ -7,7 +7,8 @@ export const state = () => ({
   activeObservationId: null,
   spreadSheetId: null,
   orderByOptions: ['Topic naam', 'Status', 'Verantwoordelijke', 'Fase Naam'],
-  activeOrderByOption: 0
+  activeOrderByOption: 0,
+  activeProject: null
 })
 
 export const mutations = {
@@ -25,6 +26,9 @@ export const mutations = {
   },
   setActiveOrderBy(state, val) {
     state.activeOrderByOption = val
+  },
+  setActiveProject(state, val) {
+    state.activeProject = val
   }
 }
 
@@ -57,12 +61,17 @@ export const actions = {
     dispatch('getSheet', { spreadSheetId, sheet: 'Fases' })
   },
 
+  setActiveOrderBy({ state, commit }, val) {
+    const id = state.orderByOptions.indexOf(val)
+    commit('setActiveOrderBy', id)
+  },
+
   setActiveObservation({ commit }, id) {
     commit('setActiveObservation', id)
   },
 
-  setActiveOrderBy({ commit }, id) {
-    commit('setActiveOrderBy', id)
+  setActiveProject({ commit }, val) {
+    commit('setActiveProject', val)
   },
 
   async sendFormData({ state, dispatch, commit }, { data, observation }) {
@@ -109,6 +118,16 @@ export const getters = {
     if (state.Observaties === null) return null
     if (state.activeObservationId === null) return null
     return state.Observaties[state.activeObservationId]
+  },
+
+  setActiveProject: state => {
+    if (state.Observaties === null) return null
+    if (state.activeObservationId === null) return null
+    return state.Observaties[state.activeObservationId]
+  },
+
+  ObservationsListSortOptions: state => {
+    return state.orderByOptions
   },
 
   parsedObservation: (state, getters) => {
