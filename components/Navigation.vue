@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex m-5"
+    class="flex"
     aria-label="Breadcrumb">
     <ol
       role="list"

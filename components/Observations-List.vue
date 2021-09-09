@@ -13,13 +13,13 @@
         </template>
       </FormulateInput>
     </div>
-    <ul class="bg-blue-400">
+    <ul class="bg-white">
       <li
         v-for="(t, key) in orderedList"
         :key="`topic-${key}`"
       >
-        <div class="px-4 py-2 sm:px-6 uppercase sticky top-0 bg-blue-400">
-          <h3 class="text-sm text-white leading-6 ">
+        <div class="px-4 py-2 sm:px-6 uppercase sticky top-0 bg-blue-50">
+          <h3 class="text-sm text-gray-700 leading-6 ">
             {{ key }}
           </h3>
           <p class="text-white text-sm italic">

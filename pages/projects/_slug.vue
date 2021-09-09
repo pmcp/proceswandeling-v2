@@ -1,8 +1,22 @@
 <template>
   <div class="relative">
-    <Navigation class=" z-10 sticky top-5"/>
+    <div class="relative bg-gray-800 pb-32">
+      <div class="absolute inset-0">
+        <img
+          class="w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
+          alt="">
+        <div
+          class="absolute inset-0 bg-gray-800 mix-blend-multiply"
+          aria-hidden="true"/>
+      </div>
+      <div class="relative  px-4 py-5 sm:px-6 lg:px-8">
+        <Navigation class="mb-5"/>
+      </div>
+    </div>
+
     <div
-      class="relative flex ">
+      class="relative flex rounded-2xl shadow-xl mx-8 -mt-32 bg-white">
       <!-- PASSWORD: START -->
       <div
         v-if="!passChecked"
@@ -10,7 +24,7 @@
         <FormulateForm
           @submit="checkPass">
           <div
-            class="flex-1  p-6 flex flex-col justify-between bg-blue-100"
+            class="flex-1  p-6 flex flex-col justify-between"
           >
             <div class="flex-1 pt-4 flex flex-col justify-between font-light">
               <div class="flex-1">
@@ -41,10 +55,10 @@
       <!-- PASSWORD: END -->
       <template v-if="passChecked">
 
-        <Observations-List class="relative sticky top-20 h-screen overflow-y-auto overflow-x-hidden w-1/5 mx-5 "/>
+        <Observations-List class="relative sticky top-0 h-screen overflow-y-auto overflow-x-hidden w-1/5"/>
         <div
           v-if="observation"
-          class="flex relative sticky top-20 w-4/5">
+          class="flex relative sticky top-20 w-4/5 py-5">
           <Card class="bg-white  px-5 w-2/3" />
           <div class="h-full w-1/3">
             <Action class=" relative sticky top-5 mr-5"/>
