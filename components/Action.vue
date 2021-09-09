@@ -48,7 +48,6 @@
       </div>
       <FormulateInput
         :disabled="status != 0"
-        :wrapper-class="['btn']"
         type="submit"
       >
         <template>

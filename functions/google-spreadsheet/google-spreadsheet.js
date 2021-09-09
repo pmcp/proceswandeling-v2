@@ -1,7 +1,5 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 
-
-
 module.exports = {
   getSheet: async (speadSheetId, sheetId) => {
     // Get doc based on id
@@ -16,18 +14,16 @@ module.exports = {
 
     await doc.loadInfo() // loads document properties and worksheets
 
-    let sheet;
-    
-    if(isNaN(sheetId)){
+    let sheet
+
+    if (isNaN(sheetId)) {
       sheet = await doc.sheetsByTitle[sheetId]
     } else {
       sheet = await doc.sheetsByIndex[sheetId]
     }
     return sheet
-    
   },
-  getRows: async (sheet) => {
-    
+  getRows: async sheet => {
     const rows = await sheet.getRows() // can pass in { limit, offset }
     return rows.map((row, i) => {
       let temp = {}

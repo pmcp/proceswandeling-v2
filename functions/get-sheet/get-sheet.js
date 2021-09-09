@@ -14,12 +14,13 @@ if (!process.env.GOOGLE_PRIVATE_KEY)
 const sheetAPI = require('../google-spreadsheet/google-spreadsheet')
 
 exports.handler = async function(event, context) {
-
   const data = JSON.parse(event.body)
   const spreadSheetId = data.spreadSheetId
   const sheetId = data.sheet
   const sheet = await sheetAPI.getSheet(spreadSheetId, sheetId)
   const rows = await sheetAPI.getRows(sheet)
+
+  // TODO: Clean up rows here / sanity check
 
   return {
     statusCode: 200,

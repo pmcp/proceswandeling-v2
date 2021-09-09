@@ -2,10 +2,9 @@
   <div
     :class="{ 'bg-blue-100 hover:bg-blue-100': isActive }"
     class="block hover:bg-blue-50 bg-white cursor-pointer"
-    @click="setActiveObservation(id)">
+    @click="setActiveObservation(id -1)">
     <div class="flex items-center px-4 py-4 sm:px-6">
       <div class="min-w-0 flex-1 flex items-center">
-
         <div>
           <div class="flex flex-col">
             <p class="text-sm font-medium text-blue-600 truncate pb-2">{{ card.opmerking }}</p>
@@ -41,7 +40,7 @@ export default {
     id: {
       type: Number,
       default: function() {
-        return 0
+        return -1
       }
     }
   },
@@ -50,7 +49,10 @@ export default {
       return this.id === this.$store.state.activeObservationId
     },
     card() {
-      const card = this.$store.state.Observaties[this.id]
+      if (this.id === -1) return
+      console.log('the id', this.id)
+      const card = this.$store.state.Observaties[this.id - 1]
+
       let status = 'Niet bepaald'
       if (typeof card.Status != 'undefined') {
         if (card.Status !== '') {
