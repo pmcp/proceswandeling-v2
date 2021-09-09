@@ -1,10 +1,8 @@
 <template>
   <div class="relative">
     <Navigation class=" z-10 sticky top-5"/>
-
     <div
       class="relative flex ">
-
       <!-- PASSWORD: START -->
       <div
         v-if="!passChecked"
@@ -43,11 +41,16 @@
       <!-- PASSWORD: END -->
       <template v-if="passChecked">
 
-        <Observations-List class="relative sticky top-20  h-screen overflow-hidden overflow-y-auto overflow-x-hidden w-1/5 mx-5 "/>
-        <Observation
+        <Observations-List class="relative sticky top-20 h-screen overflow-y-auto overflow-x-hidden w-1/5 mx-5 "/>
+        <div
           v-if="observation"
-          class="bg-white overflow-y-auto p-5 mt-20"
-        />
+          class="flex relative sticky top-20 w-4/5">
+          <Card class="bg-white  px-5 w-2/3" />
+          <div class="h-full w-1/3">
+            <Action class=" relative sticky top-5 mr-5"/>
+          </div>
+        </div>
+
         <div
           v-else
           class="w-full h-full flex justify-center items-center"

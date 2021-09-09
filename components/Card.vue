@@ -2,23 +2,16 @@
   <div>
     <div>
       <div class="flex flex-col overflow-hidden container mx-auto">
-
-
-        <div
-
-        >
-          <youtube
-            :video-id="action.session.videoId"
-            :player-vars="{ start: action.session.videoStartTime }"
-            class="embed-container m-5"
-          />
-        </div>
+        <youtube
+          :video-id="action.session.videoId"
+          :player-vars="{ start: action.session.videoStartTime }"
+          class="embed-container mx-5"
+        />
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
             <p class="text-xl text-gray-900">
               <span class="font-semibold">Moment</span>
             </p>
-
             <p class="text-md text-gray-500 py-2">
               {{ action.action.context }}
             </p>
@@ -31,7 +24,6 @@
               <span class="font-semibold">Halte in wandeling </span>
             </p>
             <ol class="overflow-hidden">
-
               <li
                 v-for="(p, key) in phases"
                 :key="`phase-${key}`"
@@ -108,12 +100,6 @@
                 </template>
               </li>
             </ol>
-            <!--
-            <p class="text-xl text-gray-900">
-              <span class="font-semibold">Fase:</span> {{ action.phase.order }}.
-              {{ action.phase.name }}
-            </p>
-            <p class="text-md text-gray-500 py-2">{{ action.phase.descr }}</p> -->
           </div>
         </div>
 
