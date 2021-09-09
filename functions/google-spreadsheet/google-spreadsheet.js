@@ -44,14 +44,9 @@ module.exports = {
     return addedRow._rowNumber - 1 // return row number (minus the header row)
   },
   updateRow: async (sheet, data) => {
-    console.log('gonna update row')
-
     const rows = await sheet.getRows()
-    console.log('All Rows', rows)
     const { rowId, ...objectForUpdate } = data
-    console.log('Row Id', rowId)
     const selectedRow = rows[rowId]
-    console.log('SelectedRow', selectedRow)
     Object.entries(data).forEach(([k, v]) => {
       selectedRow[k] = v
     })

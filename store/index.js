@@ -6,7 +6,7 @@ export const state = () => ({
   status: 0,
   activeObservationId: null,
   spreadSheetId: null,
-  orderByOptions: ['Topic naam', 'Status', 'Verantwoordelijke'],
+  orderByOptions: ['Topic naam', 'Status', 'Verantwoordelijke', 'Fase Naam'],
   activeOrderByOption: 0
 })
 
@@ -41,7 +41,7 @@ export const actions = {
       const content = await resultSheet.json()
       commit('setSheet', { id: sheet, content: content })
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       throw 'Unable to fetch sheet'
     }
   },
@@ -50,15 +50,14 @@ export const actions = {
     // Set spreadsheetId in state
     commit('setSpreadSheetId', spreadSheetId)
     // Get & set the two sheets we need
-    const observations = dispatch('getSheet', {
+    dispatch('getSheet', {
       spreadSheetId,
       sheet: 'Observaties'
     })
-    const Fases = dispatch('getSheet', { spreadSheetId, sheet: 'Fases' })
+    dispatch('getSheet', { spreadSheetId, sheet: 'Fases' })
   },
 
   setActiveObservation({ commit }, id) {
-    console.log('here', id)
     commit('setActiveObservation', id)
   },
 
@@ -81,50 +80,18 @@ export const actions = {
       card: updatedCard
     }
 
-    console.log(toSend)
-    const updatedRow = await fetch('/.netlify/functions/update-sheet', {
+    await fetch('/.netlify/functions/update-sheet', {
       method: 'POST',
       body: JSON.stringify(toSend)
     })
-
-    console.log(updatedRow)
-    return
-    // try {
-    //   const updatedRow = fetch('/.netlify/functions/update-sheet', {
-    //     method: 'POST',
-    //     body: JSON.stringify(toSend)
-    //   }).then(res => {
-    //     console.log('RES', res)
-    //     commit('setStatus', 2)
-    //     dispatch('getSheet', {
-    //       spreadSheetId: toSend.spreadSheetId,
-    //       sheet: toSend.sheet
-    //     }).then(res => {
-    //       commit('setStatus', 2)
-    //       setTimeout(function() {
-    //         commit('setStatus', 0)
-    //       }, 500)
-    //     })
-    //   })
-    //
-    //   const content = await updatedRow.json()
-    //
-    //   console.log(content)
-    // } catch (err) {
-    //   console.log(err)
-    //   throw 'Unable to fetch sheet'
-    // }
-
-    // console.log(toSend)
   }
 }
 
 export const getters = {
   ObservationsOrderedBy: state => {
     const orderBy = state.orderByOptions[state.activeOrderByOption]
-    if (state.Observaties == undefined) return null
-    if (state.Observaties == null) return null
-    const ObservationsOrdered = state.Observaties.reduce((acc, observation) => {
+    if (!state.Observaties) return null
+    return state.Observaties.reduce((acc, observation) => {
       let title = observation[orderBy]
       if (!title) title = 'Niet bepaald'
       if (acc[title]) {
@@ -136,7 +103,6 @@ export const getters = {
       }
       return acc
     }, {})
-    return ObservationsOrdered
   },
 
   activeObservation: state => {
@@ -152,7 +118,7 @@ export const getters = {
     const videoId = getIdFromURL(entry['Moment Video'])
     const videoStartTime = getTimeFromURL(entry['Moment Video'])
 
-    const action = {
+    return {
       id: entry.Id,
       report: {
         text: entry['Moment Beschrijving']
@@ -197,7 +163,5 @@ export const getters = {
         // 'email': entry.gsx$.$t,
       }
     }
-
-    return action
   }
 }

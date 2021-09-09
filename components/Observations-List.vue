@@ -22,6 +22,12 @@
           class="underline text-left"
           @click="setActiveOrderBy(2)">Verantwoordelijke</button>
       </li>
+      <li class="px-4 sm:px-6 text-sm">
+        <button
+          :class="{ 'text-blue-400': orderBy == 3 }"
+          class="underline text-left"
+          @click="setActiveOrderBy(3)">Fase</button>
+      </li>
     </ul>
     <ul class="bg-blue-400">
       <li

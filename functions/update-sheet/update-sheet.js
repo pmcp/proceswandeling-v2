@@ -13,21 +13,16 @@ if (!process.env.GOOGLE_PRIVATE_KEY)
 // const email = require('../email/email')
 const sheetAPI = require('../google-spreadsheet/google-spreadsheet')
 
-exports.handler = async function(event, context) {
-
+exports.handler = async function(event) {
   const data = JSON.parse(event.body)
-
-  console.log('arrived', data)
   const spreadSheetId = data.spreadSheetId
   const sheetId = data.sheet
   const cardData = data.card
 
   const sheet = await sheetAPI.getSheet(spreadSheetId, sheetId)
-  // console.log(sheet)
   await sheetAPI.updateRow(sheet, cardData)
+  await sheetAPI.getRow(sheet, cardData.rowId)
 
-  const updatedRow = await sheetAPI.getRow(sheet, cardData.rowId)
-  console.log("UPDATED ROW", updatedRow)
   return {
     statusCode: 200,
     body: 'DONE'

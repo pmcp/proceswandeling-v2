@@ -83,8 +83,7 @@ export default {
     }
   },
   watch: {
-    activeObservationId: function(val) {
-      console.log(this.observation)
+    activeObservationId: function() {
       this.actionForm = {
         text: this.observation['Actie'],
         owner: this.observation['Verantwoordelijke'],
