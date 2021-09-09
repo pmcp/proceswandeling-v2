@@ -134,6 +134,28 @@ export const getters = {
     return ObservationsPerTopic
   },
 
+  ObservationsPerStatus: state => {
+    // TODO: Here, ore somewhere else, arrange cards in correct order
+    if (state.Observaties == undefined) return null
+    if (state.Observaties == null) return null
+    const ObservationsPerTopic = state.Observaties.reduce(
+      (acc, observation) => {
+        let status = observation['Status']
+        if (!observation['Status']) status = 'Niet bepaald'
+        if (acc[status]) {
+          acc[status].cards = [...acc[status].cards, observation.Id * 1]
+        } else {
+          acc[status] = {
+            cards: [observation.Id * 1]
+          }
+        }
+        return acc
+      },
+      {}
+    )
+    return ObservationsPerTopic
+  },
+
   activeObservation: state => {
     if (state.Observaties === null) return null
     if (state.activeObservationId === null) return null
