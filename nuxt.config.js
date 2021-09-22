@@ -71,6 +71,8 @@ module.exports = {
         'border-blue-900',
         'px-3 py-2',
         'leading-none',
+        'bg-blue-400',
+        'hover:bg-blue-500',
         'focus:border-blue-500',
         'text-blue-900',
         'outline-none',
