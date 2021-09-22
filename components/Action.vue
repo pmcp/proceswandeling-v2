@@ -38,10 +38,10 @@
         <div class="flex-1">
           <FormulateInput
             type="text"
-            name="owner"
+            name="timing"
           >
             <template #label="{ id }">
-              <span class="font-semibold">Status: </span>
+              <span class="font-semibold">Timing: </span>
             </template>
           </FormulateInput>
         </div>
@@ -87,7 +87,7 @@ export default {
       this.actionForm = {
         text: this.observation['Actie'],
         owner: this.observation['Verantwoordelijke'],
-        status: this.observation['Status']
+        timing: this.observation['Timing']
       }
     }
   },

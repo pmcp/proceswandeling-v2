@@ -77,9 +77,10 @@ export const actions = {
   async sendFormData({ state, dispatch, commit }, { data, observation }) {
     commit('setStatus', 1)
     // Overwrite the updated info from the form
+    console.log(data)
     const updatedCard = {
       ...observation,
-      Status: data.status || '',
+      Timing: data.timing || '',
       Actie: data.text || '',
       Verantwoordelijke: data.owner || ''
     }
@@ -93,6 +94,7 @@ export const actions = {
       method: 'POST',
       body: JSON.stringify(toSend)
     })
+    commit('setStatus', 0)
   }
 }
 
