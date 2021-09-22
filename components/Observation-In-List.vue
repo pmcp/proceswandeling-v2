@@ -2,7 +2,7 @@
   <div
     :class="{ 'bg-blue-100 hover:bg-blue-100': isActive }"
     class="block hover:bg-blue-50 bg-white cursor-pointer"
-    @click="setActiveObservation(id -1)">
+    @click="setActiveObservation(id)">
     <div class="flex items-center px-4 py-4 sm:px-6">
       <div class="min-w-0 flex-1 flex items-center">
         <div>
@@ -46,6 +46,7 @@ export default {
   },
   computed: {
     isActive() {
+      console.log(this.id, this.$store.state.activeObservationId)
       return this.id === this.$store.state.activeObservationId
     },
     card() {

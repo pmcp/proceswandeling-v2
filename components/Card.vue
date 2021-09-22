@@ -3,10 +3,11 @@
     <div>
       <div class="flex flex-col overflow-hidden container mx-auto">
         <youtube
-          :video-id="videoId"
           :player-vars="videoVars"
+          :key="videoVars.start"
           class="embed-container mx-5"
           @ready="videoReady"
+          @playing="videoPlaying"
         />
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
@@ -145,7 +146,7 @@ export default {
   data() {
     return {
       videoPlayer: null,
-      videoId: null,
+      shouldSeek: true,
       videoVars: {}
     }
   },
@@ -163,17 +164,22 @@ export default {
   watch: {
     action: {
       handler(val) {
-        console.log('changed', val.session)
-        // this.videoVars = { autoplay: 1, start: val.session.videoStartTime }
+        this.shouldSeek = true
         this.videoPlayer.loadVideoById(val.session.videoId)
-        this.videoPlayer.playVideoAt(10)
-        console.log('video seek', this.videoPlayer)
+        this.videoVars.start = 100
       }
     }
   },
   methods: {
+    videoPlaying() {
+      // Using this shouldSeek work around because changing start time isn't working
+      if (!this.shouldSeek) return
+      this.videoPlayer.seekTo(this.action.session.videoStartTime)
+      this.shouldSeek = false
+    },
     videoReady(e) {
       this.videoPlayer = e.target
+      this.videoPlayer.loadVideoById(this.action.session.videoId)
     }
   }
 }

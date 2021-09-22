@@ -62,6 +62,35 @@ module.exports = {
   /*
   ** Build configuration
   */
+  purgeCSS: {
+    mode: 'postcss',
+    // ? Safelisting docs: https://purgecss.com/safelisting.html
+    safelist: {
+      standard: [
+        'border',
+        'border-blue-900',
+        'px-3 py-2',
+        'leading-none',
+        'focus:border-blue-500',
+        'text-blue-900',
+        'outline-none',
+        'border-box',
+        'w-full',
+        'mb-1'
+      ],
+      deep: [/dark/, /light/, /btn/, /icon/, /', 'ain/],
+      greedy: [
+        /^card/,
+        /^nuxt-content/,
+        /image$/,
+        /title$/,
+        /^nuxt-content/,
+        /code/,
+        /pre/,
+        /token/
+      ]
+    }
+  },
   build: {
     transpile: ['vue-youtube-embed'],
     extractCSS: true,
