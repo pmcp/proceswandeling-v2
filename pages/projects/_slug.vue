@@ -34,7 +34,7 @@
                 >
                   <template #label="{ id }">
                     <div>
-                      <span class="font-semibold">Paswoord voor dit project:</span>
+                      <span class="text-blue-900 font-semibold">Paswoord voor dit project:</span>
                     </div>
                   </template>
                 </FormulateInput>
@@ -67,7 +67,7 @@
 
         <div
           v-else
-          class="w-full h-full flex justify-center items-center"
+          class="w-full min-h-screen flex justify-center items-center"
         >
           <span class="italic text-blue-500">Selecteer een observatie</span>
         </div>

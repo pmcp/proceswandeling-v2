@@ -3,9 +3,10 @@
     <div>
       <div class="flex flex-col overflow-hidden container mx-auto">
         <youtube
-          :video-id="action.session.videoId"
-          :player-vars="{ start: action.session.videoStartTime }"
+          :video-id="videoId"
+          :player-vars="videoVars"
           class="embed-container mx-5"
+          @ready="videoReady"
         />
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1">
@@ -138,7 +139,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+  data() {
+    return {
+      videoPlayer: null,
+      videoId: null,
+      videoVars: {}
+    }
+  },
   computed: {
     action() {
       return this.$store.getters.parsedObservation
@@ -148,6 +158,22 @@ export default {
     },
     phases() {
       return this.$store.state.Fases
+    }
+  },
+  watch: {
+    action: {
+      handler(val) {
+        console.log('changed', val.session)
+        // this.videoVars = { autoplay: 1, start: val.session.videoStartTime }
+        this.videoPlayer.loadVideoById(val.session.videoId)
+        this.videoPlayer.playVideoAt(10)
+        console.log('video seek', this.videoPlayer)
+      }
+    }
+  },
+  methods: {
+    videoReady(e) {
+      this.videoPlayer = e.target
     }
   }
 }

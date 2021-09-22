@@ -3,6 +3,10 @@
 > Accessibility Issues Sharing Platform
 
 ## TODO
+- Add "Edit" button to action card
+- Autofocus on project password field
+- Enter project on enter
+- Fallback if 
 - Change colors tailwind
 - Add 'Timing' in action
 - change icons homepage

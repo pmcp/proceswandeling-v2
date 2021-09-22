@@ -8,7 +8,7 @@
         @input="setActiveOrderBy">
         <template #label="{ id }">
           <div class="pb-2">
-            <span class="font-semibold">Sorteer: </span>
+            <span class="text-blue-900 font-semibold">Sorteer: </span>
           </div>
         </template>
       </FormulateInput>
@@ -19,7 +19,7 @@
         :key="`topic-${key}`"
       >
         <div class="px-4 py-2 sm:px-6 uppercase sticky top-0 bg-blue-50">
-          <h3 class="text-sm text-gray-700 leading-6 ">
+          <h3 class="text-sm text-blue-900 leading-6 ">
             {{ key }}
           </h3>
           <p class="text-white text-sm italic">
