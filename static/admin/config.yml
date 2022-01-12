@@ -53,8 +53,10 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Intro', name: 'intro', widget: 'string', required: true }
-      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
+      - { label: 'Link', name: 'link', widget: 'string', required: true }
+      - { label: 'Icon', name: 'icon', widget: 'text', required: true }
+      - { label: 'Intro', name: 'intro', widget: 'markdown', required: true }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
   - name: 'projects'
     label: 'Projects'
     label_singular: 'Project'

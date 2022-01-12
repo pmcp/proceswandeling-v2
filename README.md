@@ -1,9 +1,11 @@
 # Proceswandeling
 
-> Accessibility Issues Sharing Platform
 
 ## TODO
+- Create page voor aanbevelingen
+  - Topic > aanbevelingen > Voorbeelden
 - Add "Edit" button to action card
+- Better Nav on pages
 - Autofocus on project password field
 - Enter project on enter
 - Fallback if 
@@ -20,4 +22,4 @@
 ## Questions
 - Is Stakeholder nog nodig?
 - Transfer Mogelijk, is dat boolean?
-
+- Eigen video?
