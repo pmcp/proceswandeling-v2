@@ -126,6 +126,14 @@ export default {
     return {
       page
     }
+  },
+  // I added the identity widget here, so I don't need to use paid Netlify plan (for custom identity emails)
+  head() {
+    return {
+      script: [
+        { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
+      ]
+    }
   }
 }
 </script>
