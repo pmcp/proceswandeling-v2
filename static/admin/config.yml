@@ -1,4 +1,4 @@
-site_url: https://ntn-boilerplate.netlify.app/
+site_url: https://reverent-shirley-c48d3c.netlify.app/
 logo_url: https://ntn-boilerplate.netlify.app/icon.png
 
 #publish_mode: editorial_workflow
@@ -6,6 +6,7 @@ backend:
   name: git-gateway
   branch: main
   squash_merges: true
+  repo: pmcp/proceswandeling-v2
 
 slug:
   encoding: "ascii"

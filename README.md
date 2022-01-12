@@ -8,7 +8,6 @@
 - Enter project on enter
 - Fallback if 
 - Change colors tailwind
-- Add 'Timing' in action
 - change icons homepage
 - Check if all tailwind classes are exported
 - fix youtube start time
@@ -17,4 +16,8 @@
 - More secure password flow
 - Use own video player
 - Check Project for other TODO's
+
+## Questions
+- Is Stakeholder nog nodig?
+- Transfer Mogelijk, is dat boolean?
 

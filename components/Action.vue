@@ -86,7 +86,7 @@ export default {
     activeObservationId: function() {
       this.actionForm = {
         text: this.observation['Actie'],
-        owner: this.observation['Verantwoordelijke'],
+        owner: this.observation['Uitvoerder Actie'],
         timing: this.observation['Timing']
       }
     }

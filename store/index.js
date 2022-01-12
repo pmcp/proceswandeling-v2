@@ -6,7 +6,7 @@ export const state = () => ({
   status: 0,
   activeObservationId: null,
   spreadSheetId: null,
-  orderByOptions: ['Topic naam', 'Status', 'Verantwoordelijke', 'Fase Naam'],
+  orderByOptions: ['Topic naam', 'Status', 'Uitvoerder Actie', 'Fase Naam'],
   activeOrderByOption: 0,
   activeProject: null
 })
@@ -178,7 +178,7 @@ export const getters = {
         // 'email': entry.gsx$.$t,
       },
       owner: {
-        name: entry['Verantwoordelijke'],
+        name: entry['Uitvoerder Actie'],
         status: entry['Timing'],
         timing: entry['Status']
         // 'email': entry.gsx$.$t,
