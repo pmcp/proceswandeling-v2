@@ -1,11 +1,9 @@
 ---
 title: test article maarten
-intro: Intror
+intro: Intro
 ---
+test ervoor
+
 <card :sheet="data.projectId" :observation="data.observationId" />
 
-
-
-
-
-asdfg
+test erna
