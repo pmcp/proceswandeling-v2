@@ -11,3 +11,11 @@ intro: Zelf ook een proceswandeling laten uitvoeren? Of een andere vraag?
 Hans Thielemans - Hans.Thielemans@Stad.Gent - 0486 62 32 96
 
 Ann Clopterop - Ann.Clopterop@stad.gent - 0471 33 91 15
+
+\-----------------------------------------------------------------------
+
+Dienst Lokaal Sociaal Beleid - Stad Gent
+
+Woodrow Wilsonplein 5
+
+9000 Gent
