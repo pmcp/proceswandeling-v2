@@ -9,5 +9,5 @@ description: Via de webshop van de lokale dienstencentra kan je opzoeken welke
 sheet: 1LvEt1kiesGXx6JzrqTtkqd09RRVbdZqgErXdVN4NWfs
 password: LDC
 date: 2022-06-20T22:00:00.000Z
-Status: lopend
+Status: afgelopen
 ---
