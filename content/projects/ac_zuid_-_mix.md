@@ -7,5 +7,5 @@ description: De ervaringsdeskundigen betreden het EGW-gebouw en lopen het hele
 sheet: 1JjAtAyBOz9x6Le2qzwCYeKXroW5_WXZi380ZdPRn9MY
 password: MIX
 date: 2022-06-27T22:00:00.000Z
-Status: lopend
+Status: afgelopen
 ---
