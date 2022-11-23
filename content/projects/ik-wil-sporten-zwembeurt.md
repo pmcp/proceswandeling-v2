@@ -8,5 +8,5 @@ sheet: 1i1NIbeBKFnHlHbs3rS9pHTLCGR3c9JBHgcTkN16gAvk
 slug: ik-wil-sporten-zwembeurt
 password: test
 date: 2021-09-01T16:27:18.400Z
-Status: lopend
+Status: afgelopen
 ---
