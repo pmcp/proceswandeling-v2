@@ -5,4 +5,5 @@ description: Een kamp reserveren voor je kind kan alleen online. Om dat te doen
 sheet: 14IgT1DUXAsaV6QD2U-umuFvaPmRwOlWu1WmBXqINMFo
 password: test
 date: 2021-07-31T22:00:00.000Z
+Status: afgelopen
 ---
